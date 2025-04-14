@@ -186,7 +186,17 @@ function retry(func, attempts) {
  *
  */
 function logger(func, logFunc) {
-
+  return function (...rest) {
+    const a = rest
+      .map((elem) => {
+        return JSON.stringify(elem);
+      })
+      .join(',');
+    logFunc(`${func.name}(${a}) starts`);
+    const i = func(...rest);
+    logFunc(`${func.name}(${a}) ends`);
+    return i;
+  };
 }
 
 /**
