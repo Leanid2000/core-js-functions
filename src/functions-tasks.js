@@ -51,7 +51,12 @@ function getFunctionBody(func) {
  *
  */
 function getArgumentsCount(funcs) {
-
+  const a = [];
+  funcs.map((elem) => {
+    a.push(elem.length);
+    return elem;
+  });
+  return a;
 }
 
 /**
