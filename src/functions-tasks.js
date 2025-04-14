@@ -95,7 +95,24 @@ function getPowerFunction(exponent) {
  *   getPolynom()      => null
  */
 function getPolynom(...rest) {
-
+  if (rest) {
+    if (rest.length === 3) {
+      return function (num) {
+        return rest[0] * num ** 2 + rest[1] * num + rest[2];
+      };
+    }
+    if (rest.length === 2) {
+      return function (num) {
+        return rest[0] * num + rest[1];
+      };
+    }
+    if (rest.length === 1) {
+      return function () {
+        return rest[0];
+      };
+    }
+  }
+  return null;
 }
 
 /**
